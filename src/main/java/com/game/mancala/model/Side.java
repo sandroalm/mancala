@@ -7,7 +7,6 @@ import java.util.List;
 public class Side {
 
 	private final List<Integer> pits = new ArrayList<>(Arrays.asList(6, 6, 6, 6, 6, 6, 0));
-	private int bigPit;
 	private final int player;
 
 	public Side(int player) {
@@ -16,14 +15,6 @@ public class Side {
 
 	public List<Integer> getPits() {
 		return pits;
-	}
-
-	public int iBigPit() {
-		return bigPit;
-	}
-
-	public void setBigPit(int bigPit) {
-		this.bigPit = bigPit;
 	}
 
 	public int getPlayer() {
@@ -44,6 +35,10 @@ public class Side {
 
 	public Integer getValue(int index) {
 		return pits.get(index);
+	}
+
+	public boolean hasMoviments() {
+		return pits.subList(0, pits.size() - 1).stream().filter(value -> value > 0).count() > 0;
 	}
 
 }

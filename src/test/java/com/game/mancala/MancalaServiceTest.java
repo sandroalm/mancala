@@ -21,7 +21,7 @@ public class MancalaServiceTest {
 
 	@Test
 	public void shouldMoveTONExtBoardSameSide() {
-		int player = 1;
+		int player = 0;
 		int pit = 0;
 		mancalaService.move(player, pit);
 

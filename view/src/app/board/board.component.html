@@ -1,12 +1,4 @@
 <br />
-<style>
-    div {
-        border-style: solid;
-    }
-    .disabled{
-        background-color: #A9A9A9;
-    }
-</style>
 <div class="container">
     <div class="row">
         <div class="col-2" [ngClass]="{'disabled': currentPlayer == 1}">
@@ -14,7 +6,7 @@
             {{ firstSide?.pits[6]}}
         </div>
         <div class="col-8">
-            <div  class="row" [ngClass]="{'disabled': currentPlayer == 1}">
+            <div class="row" [ngClass]="{'disabled': currentPlayer == 1}">
                 <div class="col" (click)="move(0,5)">
                     {{ firstSide?.pits[5]}}
                 </div>
@@ -63,4 +55,10 @@
 </div>
 
 <br>
-<h2> Player {{ currentPlayer+1 }} turn </h2>
+<h2 *ngIf="!board?.hasAwinner"> Player {{ currentPlayer+1 }} turn </h2>
+<h2 *ngIf="board?.hasAwinner"> END OF THE GAME! </h2>
+
+<br />
+<button (click)="reset()">Reset</button>
+
+<br />

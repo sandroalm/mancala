@@ -17,7 +17,7 @@ export class GameService {
         return this.http.get(this.BASE_URL);
     }
 
-    getWhosTurn(): any {
-        return this.http.get(this.BASE_URL + '/whosturn');
+    reset(): any {
+        return this.http.delete(this.BASE_URL);
     }
 }

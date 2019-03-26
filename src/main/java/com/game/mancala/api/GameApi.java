@@ -1,4 +1,4 @@
-package com.game.mancala.controller;
+package com.game.mancala.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,14 +20,20 @@ public class GameApi {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Board move(@RequestParam(name = "player") Integer player, @RequestParam(name = "pit") Integer pit) {
-		if (player == mancalaService.getBoard().getWhosTurn()) {
-			return mancalaService.move(player, pit);
+		Board moved = mancalaService.move(player, pit);
+		if(moved.getHasAwinner()) {
+			moved.finalizeGame();
 		}
-		return getBoard();
+		return moved;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Board getBoard() {
 		return mancalaService.getBoard();
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE)
+	public Board reset() {
+		return mancalaService.reset();
 	}
 }
