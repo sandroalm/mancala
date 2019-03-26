@@ -1,0 +1,13 @@
+HELP.md
+/target/
+/client/dist/
+/client/node_modules/
+!.mvn/wrapper/maven-wrapper.jar
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# eclipse project file
+.settings/
+.classpath
+.project
