@@ -36,7 +36,6 @@ public class MancalaService {
 					pits = currentSide.getPits();
 					pitIndex = 0;
 				}
-				
 
 				currentSide.add(pitIndex, 1);
 			}
@@ -54,6 +53,13 @@ public class MancalaService {
 				board.changeWhosTurn();
 			}
 		}
+
+		if (board.getHasAwinner()) {
+			board.finalizeGame();
+		}
+
+		updateGameStatus();
+		
 		return board;
 	}
 
@@ -65,6 +71,12 @@ public class MancalaService {
 		side.add(BIG_PILE_INDEX, value + 1);
 		side.clear(pit);
 		return side.getPits();
+	}
+
+	private void updateGameStatus() {
+		if (board.getHasAwinner()) {
+			board.finalizeGame();
+		}
 	}
 
 	public Board getBoard() {

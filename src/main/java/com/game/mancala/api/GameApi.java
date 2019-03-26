@@ -20,18 +20,14 @@ public class GameApi {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Board move(@RequestParam(name = "player") Integer player, @RequestParam(name = "pit") Integer pit) {
-		Board moved = mancalaService.move(player, pit);
-		if(moved.getHasAwinner()) {
-			moved.finalizeGame();
-		}
-		return moved;
+		return mancalaService.move(player, pit);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Board getBoard() {
 		return mancalaService.getBoard();
 	}
-	
+
 	@RequestMapping(method = RequestMethod.DELETE)
 	public Board reset() {
 		return mancalaService.reset();
